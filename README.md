@@ -41,7 +41,7 @@ Now you can call the script from anywhere just as you would call **ls**, **cd** 
 
 ## **Using the script**
 
-If you didn't install the script under `/usr/bin` folder that you must
+If you didn't install the script under `/usr/bin` folder, then you must
 copy the script in the **java package** where you want to merge the files
 
 If you installed the script then you just have to make sure that you are in
@@ -55,7 +55,7 @@ the package where you want to merge the files
 
 >**NOTE:** A bad example would be to send as input a class named Main
 because all files will be merged into a **Main.java** file which will break some
-functionality. However you can hava a Main.java file in the package and it will be overwritten
+functionality. However you can have a Main.java file in the package and it will be overwritten
 with the merged java files, so my advidse is not to create a Main.java file
 
 The input file has to contain a **main function** with the following signature:
@@ -148,6 +148,9 @@ starts with the **Main** class
 * The indentation of the blocks is inherited from parent files.
 
 * You should provide one java file containing a **main** method
+
+* The java files WILL BE NOT modified in any way, they will be merged
+in the Mian.java and every edit will occur in Main file
 
 ## **Example**
 
