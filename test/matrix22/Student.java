@@ -1,6 +1,6 @@
 package matrix22;
 
-class Student {
+public class Student {
     private final String name;
     private double grade;
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-class Internship {
+public class Internship {
     private final String name;
     private double minGrade;
     List<Student> students;
@@ -50,5 +50,4 @@ class Internship {
             }
         }
     }
-
 }
