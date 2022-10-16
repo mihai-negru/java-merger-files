@@ -149,3 +149,15 @@ starts with the **Main** class
 
 * You should provide one java file containing a **main** method
 
+## **Example**
+
+Go in the `test/matrix22` folder and try to run the script:
+
+```BASH
+    cd test/matrix22/
+
+    java_merge JobMarket
+```
+
+After running you should have one **Main.java** containing all the java files
+concatenated and ready for **lambda checker**
