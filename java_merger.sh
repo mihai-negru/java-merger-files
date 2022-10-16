@@ -59,7 +59,7 @@ concate_java_files_to_one() {
     # Append all java classes/interfaces to $2.java
     for java_file in $JAVA_FILES; do
         if check_main_func $java_file; then
-            printf "File $java_file has a main function\n"
+            printf "File $java_file has a main method\n"
         else
             cat $java_file >> $2.java
         fi
