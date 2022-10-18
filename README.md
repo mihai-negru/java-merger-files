@@ -234,7 +234,7 @@ Then run the following command (**Works just for Main Java File**)
     cd src/matrix22/
 
     java_merger Main
-    <Warning>: Main.java provided as input, do not run "java_merger Main twice"
+    <Warning>: Main.java provided as input, do not run "java_merger Main" twice
     <Run>: Generating Main.java
     <Warning>: JobMarket.java has a main method, ignoring
     <Run>: Recalibrate Main.java package and imports
