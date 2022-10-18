@@ -57,7 +57,7 @@ based on the options. Based on your needs you can merge files differently
 * (1) - No input needed for the java_merger. This option will generate an empty **Main.java** file with **NO MAIN CLASS** and other classes appended **WILL NOT** be public. If you have a Main.java file in your directory then it will be wiped out and the processing will occur. This option is good then you want to add all classes and **lambdaChecker** already has provided you a **Main Class**. Just classes with no main method will be added
 the rest will be ignored.
 
-* (2) (Main) - Input should be a **Main** class and there MUST exists a **Main.java** file containing a functional Main class. All the files will be appended after the Main Class. If **Main.java** File does not exist the execution will be canceled. This is good when you provide a Main Class and want other Java Classes to be appended on this file so you can post it on **lambdaChecker**. This option works just with **Main** Class. For this option you **MUST** not run the script for the second time will the Main method, because all the classes will be appended twice. If you want to call again this method, refactor your Main class at its initial state.
+* (2) (Main) - Input should be a **Main** class and there MUST exists a **Main.java** file containing a functional Main class. All the files will be appended after the Main Class. If **Main.java** File does not exist the execution will be canceled. This is good when you provide a Main Class and want other Java Classes to be appended on this file so you can post it on **lambdaChecker**. This option works just with **Main** Class. For this option you **MUST** not run the script for the second time with the Main method, because all the classes will be appended twice. If you want to call again this method, refactor your Main class at its initial state.
 
 * (3) (OtherClassName) - Input should be a name of an existing java class which will became the new **MAIN** Class, if the class has no **main** method the process will be canceled and an exiting code will be returned. The Input class will be appended first and its name will be changed into the **Main** name (Policy of lambdaChecker) other classes will be appended and the code will be refactored so it can work
 
@@ -82,7 +82,7 @@ After this command a Main.java file will be generated with all java files merged
 
 After this command the Main.java file will be populated with all java files merged and refactored.
 
-(option number three):
+(Option number three):
 ```BASH
     # Must exist a class with a main method provided to java_merger
     java_merger AClassWithMainMeth
@@ -100,8 +100,6 @@ A valid **main** method should look like this (respecting the Java Coding style 
         // Your code here
     }
 ```
-
-
 
 >**NOTE:** **java_merger** script is based on the fact that **YOUR** java code is written **CORRECT**
 and follows a rigid **indentation** (nested blocks should not be on the same level as the parent block)
@@ -172,6 +170,18 @@ starts with the **Main** class
 * The java files WILL BE NOT modified in any way, they will be merged
 in the Main.java and every edit will occur in Main file
 
+* Warning are optional and show you messages to know what the script is doing
+
+* Read all the **options** documentations so you know what you are doing
+
+* If you want to know more about the script, open the source code. A bunch of comments are written inside the bash script so you could understand every command
+
+* Currently the script **DOES NOT** run on MACOS Systems, however it does run very well on WSL(For Windows) and Linux
+
+* java_merger should not provide you a **Main.java** on error messages, however if a Main.java is generated my advice is to delete it
+
+* Even I repeated it a lot, do not be scared, not a single class will be modified in its own file.
+
 ## **Example**
 
 Go in the `src/matrix22` folder and try to run the script:
@@ -234,3 +244,22 @@ Then run the following command (**Works just for Main Java File**)
 ```
 
 After running **java_merger Main** all Java Files that do not contain a main method will be appended and refactored in the Main.java class so you could run it on lambdaChecker
+
+## **Bad Examples**
+
+```BASH
+    # NoClass.java do not exists in the (pwd)
+
+    java_merger NoClass
+    <Error>: NoClass.java file does not exists
+    <Finish>: Java Merger finished execution unsuccessfully
+```
+
+```BASH
+    # NoMain.java exists, but does not have a main function
+
+    java_merger NoMain
+    <Run>: Creating/Empty Main.java
+    <Error>: NoMain.java file has no main method
+    <Finish>: Java Merger finished execution unsuccessfully
+```
