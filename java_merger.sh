@@ -70,6 +70,7 @@ append_java_files_to_one() {
         java_files=$(ls *.java | grep -v -E "$append_file|$ignore_file")
     else
         printf "<Error>: append_java_files: expected 1/2 classes, got $#\n"
+        printf "<Finish>: Java Merger finished execution unsuccessfully\n"
         exit 2
     fi
 
@@ -201,6 +202,7 @@ main_merge_java_files() {
             # Check if Main Java Class has a main method
             if ! check_main_func $main_file; then
                 printf "<Error>: $input_file file has no main method\n"
+                printf "<Finish>: Java Merger finished execution unsuccessfully\n"
                 exit 2
             fi
 
@@ -209,15 +211,15 @@ main_merge_java_files() {
             # Append all classes to Main Java File
             append_java_files_to_one $main_file
         elif [[ $input_class != *"."* ]]; then
-            printf "<Run>: Creating/Empty $main_file\n"
 
             # Check if Input Java Class has a main method
             if ! check_main_func $input_file; then
                 printf "<Error>: $input_file file has no main method\n"
+                printf "<Finish>: Java Merger finished execution unsuccessfully\n"
                 exit 2
             fi
 
-            printf "<Run>: Generating $main_file\n"
+            printf "<Run>: Creating/Empty $main_file\n"
 
             # Overwrite Input Java Class to Main Java File
             # and change the Input Java Class name into the
@@ -226,14 +228,18 @@ main_merge_java_files() {
             printf "\n" >> $main_file
             sed -i "s/$input_class/$main_class/g" $main_file
 
+            printf "<Run>: Generating $main_file\n"
+
             # Append all classes to Main Java File
             append_java_files_to_one $main_file $input_file
         else
             printf "<Error>: Wrong class name $input_class\n"
+            printf "<Finish>: Java Merger finished execution unsuccessfully\n"
             exit 1
         fi
     else
         printf "<Error>: $input_file file does not exists\n"
+        printf "<Finish>: Java Merger finished execution unsuccessfully\n"
         exit 1
     fi
 
