@@ -197,7 +197,7 @@ main_merge_java_files() {
         append_java_files_to_one $main_file
     elif [[ -f $input_file ]]; then
         if [[ $input_class == $main_class ]]; then
-            printf "<Warning>: $main_file provided as input, do not run \"java_merger Main twice\"\n"
+            printf "<Warning>: $main_file provided as input, do not run \"java_merger Main\" twice\n"
 
             # Check if Main Java Class has a main method
             if ! check_main_func $main_file; then
