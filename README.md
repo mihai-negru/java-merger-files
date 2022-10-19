@@ -214,7 +214,7 @@ Go in the `src/matrix22` folder and try to run the script:
     <Warning>: No file provided, Main.java will not contain a main method
     <Run>: Empty the Main.java
     <Run>: Generate Main.java
-    <Warning>: JobMarket.java has a main method, ignoring
+    <Warning>: JobMarket.java will not be added, has a main method
     <Run>: Recalibrate Main.java package and imports
     <Run>: Remove public key from java classes
     <Run>: Remove unnecessary newlines
@@ -258,7 +258,7 @@ Then run the following command (**Works just for Main Java File**)
     java_merger Main
     <Warning>: Main.java provided as input, do not run "java_merger Main" twice
     <Run>: Generate Main.java
-    <Warning>: JobMarket.java has a main method, ignoring
+    <Warning>: JobMarket.java will not be added, has a main method
     <Run>: Recalibrate Main.java package and imports
     <Run>: Remove public key from java classes
     <Run>: Remove unnecessary newlines
