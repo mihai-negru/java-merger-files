@@ -149,6 +149,27 @@ Also you can rename the script name as you want (maybe to get rid of the .sh ext
     mv java_merger.sh java_merger
 ```
 
+Another option is to crate an alias for the script
+
+```BASH
+    # On BASH
+    echo 'alias java_merger="ABSOLUTE_PATH_TO_MERGER/java_merger.sh"' >> ~/.bashrc
+    source ~/.bashrc
+
+    # On ZSH
+    echo 'alias java_merger="ABSOLUTE_PATH_TO_MERGER/java_merger.sh"' >> ~/.zshrc
+    source ~/.zshrc
+```
+
+Example of absolute path: **/home/user/gits/java-merger-files**
+
+Now you are free to run the script as a global one (As if you installed the script under `/usr/bin`)
+
+```BASH
+    cd to/package/to/merge/files
+    java_merger <Input>
+```
+
 ## **Good to know**
 
 * The script will remove every **package** codeline because is irrelevant for the **lambda checker**
@@ -192,6 +213,7 @@ Go in the `src/matrix22` folder and try to run the script:
     java_merger
     <Warning>: No file provided, Main.java will not contain a main method
     <Run>: Empty the Main.java
+    <Run>: Generate Main.java
     <Warning>: JobMarket.java has a main method, ignoring
     <Run>: Recalibrate Main.java package and imports
     <Run>: Remove public key from java classes
@@ -206,8 +228,8 @@ will contain every Java Class from current working directory and **WILL NOT HAVE
     cd src/matrix22/
 
     java_merger JobMarket
-    <Run>: Creating/Empty Main.java
-    <Run>: Generating Main.java
+    <Run>: Create/Empty Main.java
+    <Run>: Generate Main.java
     <Run>: Recalibrate Main.java package and imports
     <Run>: Remove public key from java classes
     <Run>: Remove unnecessary newlines
@@ -235,7 +257,7 @@ Then run the following command (**Works just for Main Java File**)
 
     java_merger Main
     <Warning>: Main.java provided as input, do not run "java_merger Main" twice
-    <Run>: Generating Main.java
+    <Run>: Generate Main.java
     <Warning>: JobMarket.java has a main method, ignoring
     <Run>: Recalibrate Main.java package and imports
     <Run>: Remove public key from java classes
@@ -252,7 +274,7 @@ After running **java_merger Main** all Java Files that do not contain a main met
 
     java_merger NoClass
     <Error>: NoClass.java file does not exists
-    <Finish>: Java Merger finished execution unsuccessfully
+    <Error>: Java Merger finished execution unsuccessfully
 ```
 
 ```BASH
@@ -261,5 +283,13 @@ After running **java_merger Main** all Java Files that do not contain a main met
     java_merger NoMain
     <Run>: Creating/Empty Main.java
     <Error>: NoMain.java file has no main method
-    <Finish>: Java Merger finished execution unsuccessfully
+    <Error>: Java Merger finished execution unsuccessfully
+```
+
+```BASH
+    # Main.java file does not exist in the package
+
+    java_merger Main
+    <Error>: Main.java file does not exist
+    <Error>: Java Merger finished execution unsuccessfully
 ```
