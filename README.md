@@ -149,7 +149,7 @@ Also you can rename the script name as you want (maybe to get rid of the .sh ext
     mv java_merger.sh java_merger
 ```
 
-Another option is to crate an alias for the script
+Another option is to create an alias for the script
 
 ```BASH
     # On BASH
